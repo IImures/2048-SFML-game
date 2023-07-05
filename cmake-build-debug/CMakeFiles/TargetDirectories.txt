@@ -1,0 +1,3 @@
+/Users/vladyslavkalinchenko/CLionProjects/2048/cmake-build-debug/CMakeFiles/2048.dir
+/Users/vladyslavkalinchenko/CLionProjects/2048/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/vladyslavkalinchenko/CLionProjects/2048/cmake-build-debug/CMakeFiles/rebuild_cache.dir
