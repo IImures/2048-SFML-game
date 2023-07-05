@@ -9,12 +9,14 @@
 
 class Block : public sf::Drawable {
 public:
-    Block(int size, std::string text);
+    Block(int size, int value);
     ~Block();
 
     void setFillColor(sf::Color color);
 
     void setPosition(float x, float y);
+
+    void checkEvent(sf::Event event);
 
 private:
     virtual void draw(sf::RenderTarget& target,sf::RenderStates states) const;
@@ -22,7 +24,8 @@ private:
     int size;
     int value;
     sf::RectangleShape elem;
-    std::string text;
+    sf::Text text;
+    sf::Font font;
 };
 
 

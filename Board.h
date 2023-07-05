@@ -12,7 +12,7 @@ class Board : public sf::Drawable{
 public:
     Board(int size);
 
-    void draw(sf::RenderWindow &window);
+    void pollEvent(sf::Event event);
 
     //-------------------variables
 public:
