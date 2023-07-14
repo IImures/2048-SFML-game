@@ -14,11 +14,14 @@ public:
 
     void setFillColor(sf::Color color);
 
-    void setPosition(float x, float y);
+    void setPosition(sf::Vector2f pos);
 
     void checkEvent(sf::Event event);
 
 private:
+
+    void addNumber();
+
     virtual void draw(sf::RenderTarget& target,sf::RenderStates states) const;
 
     int size;
