@@ -33,9 +33,7 @@ void Block::setFillColor(sf::Color color) {
 
 void Block::setPosition(sf::Vector2f pos) {
     elem.setPosition(pos.x, pos.y);
-    float xPos = (pos.x + elem.getGlobalBounds().width / 2) - (text.getGlobalBounds().width / 2);
-    float yPos = (pos.y + elem.getGlobalBounds().height / 4) - (text.getGlobalBounds().height / 2);
-    text.setPosition(xPos , yPos);
+    resize();
 }
 
 void Block::checkEvent(sf::Event event) {
@@ -52,7 +50,7 @@ void Block::checkEvent(sf::Event event) {
 
 void Block::addNumber() {
 
-    std::cout<<"---------\n";
+//    std::cout<<"---------\n";
     if(value == 0) value += 2;
     else value *= 2;
 
@@ -66,13 +64,22 @@ void Block::addNumber() {
         }
     }
 
+    resize();
+
+//    float xPos = (elem.getPosition().x + elem.getGlobalBounds().width / 2) - (text.getGlobalBounds().width/2 + 5);
+//    float yPos = (elem.getPosition().y + elem.getGlobalBounds().height / 3) - (text.getGlobalBounds().height/ 2 + 5);
+//
+//    text.setPosition(xPos , yPos);
+
+//    std::cout<< text.getGlobalBounds().width << " " << text.getGlobalBounds().height  << " " << text.getCharacterSize() << '\n';
+//    std::cout<< elem.getGlobalBounds().width << " " << elem.getGlobalBounds().height << '\n';
+
+}
+
+void Block::resize() {
     float xPos = (elem.getPosition().x + elem.getGlobalBounds().width / 2) - (text.getGlobalBounds().width/2 + 5);
     float yPos = (elem.getPosition().y + elem.getGlobalBounds().height / 3) - (text.getGlobalBounds().height/ 2 + 5);
 
     text.setPosition(xPos , yPos);
-
-    std::cout<< text.getGlobalBounds().width << " " << text.getGlobalBounds().height  << " " << text.getCharacterSize() << '\n';
-    std::cout<< elem.getGlobalBounds().width << " " << elem.getGlobalBounds().height << '\n';
-
 }
 

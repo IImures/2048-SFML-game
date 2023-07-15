@@ -11,9 +11,9 @@ Board::Board(int size) : boardSize(size){
             b->setFillColor(sf::Color(rand() % 255, rand() % 255, rand() % 255));
             b->setPosition( { static_cast<float>(((i * 110 - size * 60) + (1980 / 2))), static_cast<float>((j * 110 - size * 60) + (1080 / 2)) } );
             elems[i][j] = b;
-
         }
     }
+    genRandBlocks();
 }
 
 void Board::draw(sf::RenderTarget& target,sf::RenderStates states) const{

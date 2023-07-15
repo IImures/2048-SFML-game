@@ -18,9 +18,20 @@ public:
 
     void checkEvent(sf::Event event);
 
+    void setValue(int val){
+        value = val;
+        text.setString(std::to_string(value));
+        resize();
+    }
+    int getValue(){
+        return value;
+    }
+
 private:
 
     void addNumber();
+
+    void resize();
 
     virtual void draw(sf::RenderTarget& target,sf::RenderStates states) const;
 
