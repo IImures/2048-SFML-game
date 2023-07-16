@@ -80,8 +80,8 @@ private:
                         auto nextBlock = elems[x + 1][y];
                         int nextPossible = x + 1;
                         while (nextBlock->getValue() == 0 && nextPossible < boardSize - 1){
-                            nextPossible++;
-                            nextBlock = elems[nextPossible][y];
+                            //nextPossible++;
+                            nextBlock = elems[++nextPossible][y];
                         }
                         if(nextBlock->getValue() != 0)
                             while (nextBlock->getValue() != 0 && nextPossible >= 0) {
@@ -102,13 +102,13 @@ private:
                         auto nextBlock = elems[x - 1][y];
                         int nextPossible = 0;
                         while (nextBlock->getValue() == 0 && nextPossible >= 0){
-                            nextBlock = elems[nextPossible][y];
-                            nextPossible--;
+                            nextBlock = elems[nextPossible--][y];
+                            //nextPossible--;
                         }
                         if(nextBlock->getValue() != 0)
                             while (nextBlock->getValue() != 0 && nextPossible <= boardSize - 1) {
-                                nextPossible++;
-                                nextBlock = elems[nextPossible][y];
+                                //nextPossible++;
+                                nextBlock = elems[++nextPossible][y];
                             }
                         if(nextBlock->getValue() == 0) {
                             nextBlock->setValue(selBlock->getValue());
@@ -116,6 +116,53 @@ private:
                         }
                     }
                 }
+                break;
+            case UP:
+                for(int x = 0; x <= boardSize - 1; x++){
+                    for(int y = 1; y <= boardSize - 1; y++){
+                        auto selBlock = elems[x][y];
+                        if(selBlock->getValue() == 0) continue;
+                        auto nextBlock = elems[x][y - 1];
+                        int nextPossible = 0;
+                        while (nextBlock->getValue() == 0 && nextPossible >= 0){
+                            nextBlock = elems[x][nextPossible--];
+                            //nextPossible--;
+                        }
+                        if(nextBlock->getValue() != 0)
+                            while (nextBlock->getValue() != 0 && nextPossible <= boardSize - 1) {
+                                //nextPossible++;
+                                nextBlock = elems[x][++nextPossible];
+                            }
+                        if(nextBlock->getValue() == 0) {
+                            nextBlock->setValue(selBlock->getValue());
+                            selBlock->setValue(0);
+                        }
+                    }
+                }
+                break;
+                break;
+            case DOWN:
+            for(int x = 0; x <= boardSize - 1; x++){
+                for(int y = boardSize - 2; y>= 0; y--){
+                    auto selBlock = elems[x][y];
+                    if(selBlock->getValue() == 0) continue;
+                    auto nextBlock = elems[x][y+1];
+                    int nextPossible = y + 1;
+                    while (nextBlock->getValue() == 0 && nextPossible <= boardSize - 1){
+                        nextBlock = elems[x][nextPossible++];
+
+                    }
+                    if(nextBlock->getValue() != 0)
+                        while (nextBlock->getValue() != 0 && nextPossible >= 0) {
+                            //nextPossible--;
+                            nextBlock = elems[x][--nextPossible];
+                        }
+                    if(nextBlock->getValue() == 0) {
+                        nextBlock->setValue(selBlock->getValue());
+                        selBlock->setValue(0);
+                    }
+                }
+        }
                 break;
         }
         mergeBlocks();
